@@ -1,2 +1,2 @@
 # royaltiz_pricing
-Check the pricing evolution of celebrities card's  
+Check the pricing evolution of celebrities cards  
