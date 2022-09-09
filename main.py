@@ -18,3 +18,27 @@ def accept_cookies():
 
   cookie_button = driver.find_element(By.CLASS_NAME, 'cookie-banner-accept-button') # Find the button to accept cookies
   cookie_button.click()
+
+def start(player) :
+  chrome_options = Options()
+
+  # Options to run without interface
+
+  # chrome_options.add_argument("--no-sandbox")
+  # chrome_options.add_argument("--headless")
+
+  # Bypass the anti bot
+
+  chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+  chrome_options.add_experimental_option('useAutomationExtension', False)
+  chrome_options.add_argument("--disable-blink-features=AutomationControlled")
+
+  # Create the driver
+
+  global driver
+  driver = webdriver.Chrome(executable_path="./chromedriver", options=chrome_options)
+
+  # Launch the process
+
+  open_player_view(player)
+  accept_cookies()
