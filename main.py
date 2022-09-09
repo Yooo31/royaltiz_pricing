@@ -42,3 +42,9 @@ def start(player) :
 
   open_player_view(player)
   accept_cookies()
+
+def run_all_player() :
+  for actual_player in player_list:
+    print('Check for ' + actual_player)
+    all_player_price.append(actual_player + ' = ')
+    start(actual_player)
