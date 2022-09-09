@@ -19,6 +19,12 @@ def accept_cookies():
   cookie_button = driver.find_element(By.CLASS_NAME, 'cookie-banner-accept-button') # Find the button to accept cookies
   cookie_button.click()
 
+def get_player_price() :
+  print('Start getting price')
+  player_price = driver.find_element(By.XPATH, '//h3[@data-testid="talent-price"]').text # Find the card that contains the cashback
+  driver.close() # Close the browser
+  all_player_price.append(player_price + ' / ')
+
 def start(player) :
   chrome_options = Options()
 
@@ -42,9 +48,13 @@ def start(player) :
 
   open_player_view(player)
   accept_cookies()
+  get_player_price()
 
 def run_all_player() :
   for actual_player in player_list:
     print('Check for ' + actual_player)
     all_player_price.append(actual_player + ' = ')
     start(actual_player)
+
+  answer_to_send = ''.join(str(x) for x in all_player_price)
+  return(answer_to_send)
